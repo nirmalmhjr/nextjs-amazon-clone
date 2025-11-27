@@ -1,8 +1,16 @@
-import mongoose, { Document, Model, model, models, Schema } from "mongoose";
+import mongoose, {
+  Document,
+  Model,
+  model,
+  models,
+  Schema,
+  Types,
+} from "mongoose";
 import { IProductInput } from "@/types/index";
 
 export interface IProduct extends Document, IProductInput {
-  _id: string;
+  // _id: string;
+  _id: Types.ObjectId;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -102,4 +110,4 @@ const Product =
   (models.Product as Model<IProduct>) ||
   model<IProduct>("Product", productSchema);
 
-  export default Product
+export default Product;

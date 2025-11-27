@@ -3,8 +3,9 @@ import React from 'react'
 import data from '@/lib/data'
 import { HomeCard } from '@/components/shared/home/home-card'
 import {Card,CardContent} from '@/components/ui/card'
-import { getAllCategories, getProductForCard } from '@/lib/actions/product.actions'
+import { getAllCategories, getProductByTag, getProductForCard } from '@/lib/actions/product.actions'
 import { toSlug } from '@/lib/utils'
+import ProductSlider from '@/components/shared/product/product-slider'
 
 export default async function Page() {
   const categories = (await getAllCategories()).slice(0 , 4)
@@ -12,6 +13,8 @@ export default async function Page() {
 
   const featureds = await getProductForCard({tag: 'featured', limit: 4})
   const bestSellers = await getProductForCard({ tag: 'best-seller', limit: 4})
+
+  const todaysDeals = await getProductByTag({tag:'todays-deal'})
 
   const cards = [
     {
@@ -59,6 +62,11 @@ export default async function Page() {
       <HomeCarousel items={data.carousels}/>
       <div className='md:p-4 md:space-y-4 bg-border'>
         <HomeCard cards={cards} />
+        <Card className='w-full rounded-none'>
+          <CardContent className='p-4 items-center gap-3'>
+            <ProductSlider title={"Today's Deal"} products={todaysDeals}/>
+          </CardContent>
+        </Card>
       </div>
     </>
   )
