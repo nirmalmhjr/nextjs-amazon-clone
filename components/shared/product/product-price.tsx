@@ -4,7 +4,7 @@ import { cn, formatCurreny } from "@/lib/utils"
 
 const ProductPrice = ({price, className, listPrice = 0, isDeal = false, forListing = true, plain= false }: {
     price: number
-    isDeal:boolean
+    isDeal?:boolean
     listPrice?: number
     className?: string
              forListing?: boolean
