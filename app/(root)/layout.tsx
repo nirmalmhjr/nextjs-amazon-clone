@@ -1,6 +1,7 @@
 import Footer from '@/components/shared/footer'
 import Header from '@/components/shared/header'
 import React from 'react'
+import { Toaster } from 'sonner'
 
 export default async function RootLayout({
     children
@@ -12,6 +13,7 @@ export default async function RootLayout({
         <Header />
         <main className='flex-1 flex flex-col p-4'>
             {children}
+            <Toaster richColors/>
         </main>
         <Footer/>
     </div>
