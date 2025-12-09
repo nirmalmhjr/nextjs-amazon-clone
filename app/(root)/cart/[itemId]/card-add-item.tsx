@@ -36,20 +36,23 @@ export default function CardAddItem({itemId}: {itemId : string}){
                                     height:'auto'
                                 }}
                             /></Link>
-                            <div className="text-xl font-bold flex gap-2 my-2">
-                                <h3>
+                            <div className="text-xl font-bold flex flex-col gap-2 my-2">
+                                <h3 className="flex gap-2 items-center">
                                 <CheckCircle2Icon className="h-6 w-6 text-green-700"/>
-                                    Added to Cart</h3>
-                                <p className="text-sm">
-                                    <span className="font-bold">
-                                        Color: 
-                                    </span>
-                                    {item.color ?? "-"}
-                                </p>
-                                <p className="text-sm">
-                                    <span className="font-bold">Size:</span>
-                                    {item.size?? '-'}
-                                </p>
+                                    Added to Cart
+                                </h3>
+                                <div className="space-y-2">
+                                    <p className="text-sm">
+                                        <span className="font-bold">
+                                            Color:
+                                        </span>
+                                        {item.color ?? "-"}
+                                    </p>
+                                    <p className="text-sm">
+                                        <span className="font-bold">Size:</span>
+                                        {item.size?? '-'}
+                                    </p>
+                                </div>
                             </div>
                         </CardContent>
                     </Card>

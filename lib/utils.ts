@@ -18,7 +18,8 @@ export const toSlug = (text: string): string =>
     .toLowerCase()
     .replace(/[^\w\s-]+/g, "")
     .replace(/\s+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/^-+|-+$/g, "")
+    .replace(/-+/g, "-");
 
 // curreny formatter
 const CURRENY_FORMATTER = new Intl.NumberFormat("en-US", {
