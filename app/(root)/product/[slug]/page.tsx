@@ -51,9 +51,10 @@ export default async function ProductDetails(props: {
     page: Number(page || '1'),
   })
 
+
   return (
     <div>
-      <AddToBrowsingHistory id={product._id} category={product.category}/>
+      <AddToBrowsingHistory id={product._id.toString()} category={product.category}/>
       <section>
         <div className='grid grid-cols-1 md:grid-cols-5  '>
           <div className='col-span-2'>
@@ -122,7 +123,7 @@ export default async function ProductDetails(props: {
                 <AddToCart 
                   item={{
                     clientId: generateId(),
-                    product:product._id,
+                    product:product._id.toString(),
                     countInStock: product.countInStock,
                     name: product.name,
                     slug: product.slug,
