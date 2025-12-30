@@ -9,7 +9,6 @@ import Link from "next/link";
 
 export default async function  UserButton(){
     const session = await auth()
-    console.log('234224234324',session)
 
     return(
         <div className='flex gap-2 items-center z-10'>
