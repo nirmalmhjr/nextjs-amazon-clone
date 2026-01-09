@@ -6,6 +6,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { connectToDatabase } from "./lib";
 import User from "./db/models/user.model";
 import bcrypt from "bcryptjs";
+import Google from "next-auth/providers/google";
 
 declare module "next-auth" {
   // eslint-disable-next-line no-unused-vars
@@ -29,6 +30,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   adapter: MongoDBAdapter(client),
   providers: [
+    Google({
+      allowDangerousEmailAccountLinking: true,
+    }),
     CredentialsProvider({
       credentials: {
         email: {
