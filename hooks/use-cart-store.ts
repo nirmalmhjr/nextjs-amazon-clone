@@ -1,5 +1,5 @@
 import { calcDeliveryDateAndPrice } from "@/lib/actions/order.actions";
-import { Cart, OrderItem } from "@/types";
+import { Cart, OrderItem, ShippingAddress } from "@/types";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -10,7 +10,8 @@ const initialState: Cart = {
   shippingPrice: undefined,
   totalPrice: 0,
   paymentMethod: undefined,
-  expectedDeliveryDate: undefined,
+  shippingAddress: undefined,
+  deliveryDateIndex: undefined,
 };
 
 interface CartState {
@@ -18,6 +19,10 @@ interface CartState {
   addItem: (item: OrderItem, quantity: number) => Promise<string>;
   updateItem: (item: OrderItem, quantity: number) => Promise<void>;
   removeItem: (item: OrderItem) => void;
+  clearCart: () => void;
+  setShippingAddress: (shippingAddress: ShippingAddress) => Promise<void>;
+  setPaymentMethod: (paymentMethod: string) => void;
+  setDeliveryDateIndex: (index: number) => Promise<void>;
 }
 
 const useCartStore = create(
@@ -26,7 +31,7 @@ const useCartStore = create(
       cart: initialState,
 
       addItem: async (item: OrderItem, quantity: number) => {
-        const { items } = get().cart;
+        const { items, shippingAddress } = get().cart;
         const existItem = items.find(
           (x) =>
             x.product === item.product &&
@@ -60,6 +65,7 @@ const useCartStore = create(
             items: updatedCartItems,
             ...(await calcDeliveryDateAndPrice({
               items: updatedCartItems,
+              shippingAddress,
             })),
           },
         });
@@ -74,7 +80,7 @@ const useCartStore = create(
       init: () => set({ cart: initialState }),
 
       updateItem: async (item: OrderItem, quantity: number) => {
-        const { items } = get().cart;
+        const { items, shippingAddress } = get().cart;
         const exist = items.find(
           (x) =>
             x.product === item.product &&
@@ -98,13 +104,14 @@ const useCartStore = create(
             items: updatedCartItems,
             ...(await calcDeliveryDateAndPrice({
               items: updatedCartItems,
+              shippingAddress,
             })),
           },
         });
       },
 
       removeItem: async (item: OrderItem) => {
-        const { items } = get().cart;
+        const { items, shippingAddress } = get().cart;
         const updatedCartItems = items.filter(
           (x) =>
             x.product !== item.product ||
@@ -118,7 +125,50 @@ const useCartStore = create(
             items: updatedCartItems,
             ...(await calcDeliveryDateAndPrice({
               items: updatedCartItems,
+              shippingAddress,
             })),
+          },
+        });
+      },
+      setShippingAddress: async (shippingAddress: ShippingAddress) => {
+        const { items } = get().cart;
+        set({
+          cart: {
+            ...get().cart,
+            shippingAddress,
+            ...(await calcDeliveryDateAndPrice({
+              items,
+              shippingAddress,
+            })),
+          },
+        });
+      },
+      setPaymentMethod: (paymentMethod: string) => {
+        set({
+          cart: {
+            ...get().cart,
+            paymentMethod,
+          },
+        });
+      },
+      setDeliveryDateIndex: async (index: number) => {
+        const { items, shippingAddress } = get().cart;
+        set({
+          cart: {
+            ...get().cart,
+            ...(await calcDeliveryDateAndPrice({
+              items,
+              shippingAddress,
+              deliveryDateIndex: index,
+            })),
+          },
+        });
+      },
+      clearCart: () => {
+        set({
+          cart: {
+            ...get().cart,
+            items: [],
           },
         });
       },
