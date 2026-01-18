@@ -32,6 +32,8 @@ import { calculateFutureDate, formatDateTime, timeUntilMidnight } from "@/lib/ut
 import Image from "next/image"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import CheckoutFooter from "./checkout-footer"
+import { createOrder } from "@/lib/actions/order.actions"
+import { toast } from "sonner"
 
 
 const shippingAddressDefaultValues = process.env.NODE_ENV == "development" ? {
@@ -63,7 +65,8 @@ export default function CheckoutForm(){
         updateItem,
         addItem,
         removeItem,
-        setDeliveryDateIndex
+        setDeliveryDateIndex,
+        clearCart
         } = useCartStore()
 
     const shippingAddressForm = useForm<ShippingAddress>({
@@ -94,7 +97,32 @@ export default function CheckoutForm(){
     const [isDeliveryDateSelected, setIsDeliveryDateSelected] = useState<boolean>(false)
 
     const handlePlaceOrder = async () =>{
-        //todo : place order
+      const res = await createOrder({
+        items,
+        shippingAddress,
+        expectedDeliveryDate: calculateFutureDate(AVAILABLE_DELIVERY_DATES[deliveryDateIndex!].daysToDeliver),
+      deliveryDateIndex,
+      paymentMethod,
+      itemsPrice,
+      shippingPrice,
+      taxPrice,
+      totalPrice,
+    })
+    if(!res.success){
+      // toast('destructive',{
+        
+      //   description: res.message,
+      //   // variant: 'destructive',
+      // })
+      toast.warning(`${res.message}`)
+    } else {
+      // toast('default',{
+      //   description: res.message
+      // })
+      toast(`${res.message}`)
+      clearCart()
+      router.push(`/checkout/${res.data?.orderId}`)
+    }
 
     }
 
