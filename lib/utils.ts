@@ -28,7 +28,7 @@ const CURRENY_FORMATTER = new Intl.NumberFormat("en-US", {
   minimumFractionDigits: 2,
 });
 
-export function formatCurreny(number: number) {
+export function formatCurrency(number: number) {
   return CURRENY_FORMATTER.format(number);
 }
 
@@ -122,15 +122,15 @@ export const formatDateTime = (dateString: Date) => {
   };
   const formattedDateTime: string = new Date(dateString).toLocaleString(
     "en-US",
-    dateTimeOptions
+    dateTimeOptions,
   );
   const formattedDate: string = new Date(dateString).toLocaleString(
     "en-US",
-    dateOptions
+    dateOptions,
   );
   const formattedTime: string = new Date(dateString).toLocaleString(
     "en-US",
-    timeOptions
+    timeOptions,
   );
   return {
     dateTime: formattedDateTime,
@@ -138,3 +138,7 @@ export const formatDateTime = (dateString: Date) => {
     timeOnly: formattedTime,
   };
 };
+
+export function formatId(id: string){
+  return `..${id.substring(id.length - 6)}`
+}

@@ -88,7 +88,7 @@ export const OrderInputSchema = z.object({
     MongoId,
     z.object({
       name: z.string(),
-      email: z.string().email(),
+      email: z.email(),
     }),
   ]),
   items: z

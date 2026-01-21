@@ -5,7 +5,7 @@ export const APP_DESCRIPTION =
   process.env || "An Amazon clone built with Next.js and MongoDB.";
 export const PAGE_SIZE = Number(process.env.PAGE_SIZE || 9);
 export const FREE_SHIPPIN_MIN_PRICE = Number(
-  process.env.FREE_SHIPPING_MIN_PRICE || 35
+  process.env.FREE_SHIPPING_MIN_PRICE || 35,
 );
 export const APP_COPYRIGHT =
   process.env.NEXT_PUBLIC_APP_COPYRIGHT ||
@@ -13,41 +13,48 @@ export const APP_COPYRIGHT =
 
 export const AVAILABLE_PAYMENT_METHODS = [
   {
-    name:'PayPal',
+    name: "PayPal",
     commision: 0,
-    isDefault: true
+    isDefault: true,
   },
   {
-    name:'Stripe',
+    name: "Stripe",
     commision: 0,
-    isDefault: true
+    isDefault: true,
   },
   {
-    name:'Cash on Delivery',
+    name: "Cash on Delivery",
     commision: 0,
-    isDefault: true
+    isDefault: true,
   },
-]
+];
 
-export const DEFAULT_PAYMENT_METHOD = process.env.DEFAULT_PAYMENT_METHOD || 'PayPal'
+export const DEFAULT_PAYMENT_METHOD =
+  process.env.DEFAULT_PAYMENT_METHOD || "PayPal";
 
 export const AVAILABLE_DELIVERY_DATES = [
   {
-    name:'Tomorrow',
+    name: "Tomorrow",
     daysToDeliver: 1,
     shippingPrice: 12.9,
-    freeShippingMinPrice: 0
+    freeShippingMinPrice: 0,
   },
   {
-    name:'Next 3 Days',
+    name: "Next 3 Days",
     daysToDeliver: 3,
     shippingPrice: 6.9,
-    freeShippingMinPrice: 0
+    freeShippingMinPrice: 0,
   },
   {
-    name:'Next 5 Days',
+    name: "Next 5 Days",
     daysToDeliver: 1,
     shippingPrice: 4.9,
-    freeShippingMinPrice: 35
+    freeShippingMinPrice: 35,
   },
-]
+];
+
+export const SERVER_URL =
+  process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+
+export const SENDER_EMAIL = process.env.SENDER_EMAIL || "onboarding@resend.dev";
+export const SENDER_NAME = process.env.SENDER_NAME || APP_NAME;

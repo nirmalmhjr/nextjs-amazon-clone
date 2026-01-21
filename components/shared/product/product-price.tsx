@@ -1,6 +1,6 @@
 'use client'
 
-import { cn, formatCurreny } from "@/lib/utils"
+import { cn, formatCurrency } from "@/lib/utils"
 
 const ProductPrice = ({price, className, listPrice = 0, isDeal = false, forListing = true, plain= false }: {
     price: number
@@ -15,7 +15,7 @@ const ProductPrice = ({price, className, listPrice = 0, isDeal = false, forListi
     const [intValue, floatValue] = stringValue.includes(".") ? stringValue.split(".") : [stringValue, ""]
 
     return plain ? (
-        formatCurreny(price)
+        formatCurrency(price)
     ) : listPrice == 0 ? (
         <div className={cn('text-3xl', className)}>
             <span className="text-xs align-super">$</span>
@@ -54,7 +54,7 @@ const ProductPrice = ({price, className, listPrice = 0, isDeal = false, forListi
             </div>
             <div className="text-muted-foreground text-xs py-2">
                 List Price:
-                <span className="line-through">{formatCurreny(listPrice)}</span>
+                <span className="line-through">{formatCurrency(listPrice)}</span>
             </div>
         </div>
     )
