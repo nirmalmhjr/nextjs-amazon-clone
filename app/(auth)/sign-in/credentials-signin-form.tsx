@@ -68,11 +68,9 @@ export default function CredentialsSignInForm() {
       if (isRedirectError(error)) {
         throw error
       }
-      toast('Error',{
-        
-        description: 'Invalid email or password',
+      toast.error('Invalid email or password',
         // variant: 'destructive',
-      })
+      )
     }
   }
 

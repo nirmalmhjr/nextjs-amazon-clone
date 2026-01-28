@@ -1,4 +1,4 @@
-import Product from "@/db/models/product.model";
+import Product from "@/lib/db/models/product.model";
 import { connectToDatabase } from "@/lib";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -27,8 +27,8 @@ export const GET = async (request: NextRequest) => {
       products.sort(
         (a, b) =>
           productIds.indexOf(a._id.toString()) -
-          productIds.indexOf(b._id.toString())
-      )
+          productIds.indexOf(b._id.toString()),
+      ),
     );
   }
 

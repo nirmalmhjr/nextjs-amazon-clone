@@ -1,4 +1,4 @@
-import { IOrder } from '@/db/models/order.model'
+import { IOrder } from '@/lib/db/models/order.model'
 import { SERVER_URL } from '@/lib/constants'
 import { formatCurrency } from '@/lib/utils'
 import {

@@ -4,7 +4,7 @@ import client from "./lib/db/client";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { connectToDatabase } from "./lib";
-import User from "./db/models/user.model";
+import User from "./lib/db/models/user.model";
 import bcrypt from "bcryptjs";
 import Google from "next-auth/providers/google";
 
@@ -49,7 +49,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (user && user.password) {
           const isMatch = await bcrypt.compare(
             credentials.password as string,
-            user.password
+            user.password,
           );
           if (isMatch) {
             return {

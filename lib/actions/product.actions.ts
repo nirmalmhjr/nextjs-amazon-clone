@@ -1,14 +1,14 @@
 "use server";
 
 import { connectToDatabase } from "..";
-import Product, { IProduct } from "@/db/models/product.model";
+import Product, { IProduct } from "@/lib/db/models/product.model";
 import { PAGE_SIZE } from "../constants";
 import { Types } from "mongoose";
 
 export async function getAllCategories() {
   await connectToDatabase();
   const categories = await Product.find({ isPublished: true }).distinct(
-    "category"
+    "category",
   );
   return categories;
 }
@@ -27,7 +27,7 @@ export async function getProductForCard({
       name: 1,
       href: { $concat: ["/product", "$slug"] },
       image: { $arrayElemAt: ["$images", 0] },
-    }
+    },
   )
     .sort({ createdAt: "desc" })
     .limit(limit);

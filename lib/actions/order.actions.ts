@@ -1,11 +1,11 @@
-"use server"
+"use server";
 import { Cart, OrderItem, ShippingAddress } from "@/types";
 import { formatError, round2 } from "../utils";
 import { AVAILABLE_DELIVERY_DATES, FREE_SHIPPIN_MIN_PRICE } from "../constants";
 import { connectToDatabase } from "..";
 import { auth } from "@/auth";
 import { OrderInputSchema, ShippingAddressSchema } from "../validator";
-import Order,{IOrder} from "@/db/models/order.model";
+import Order, { IOrder } from "@/lib/db/models/order.model";
 import { sendPurchaseReceipt } from "@/emails";
 import { revalidatePath } from "next/cache";
 import { paypal } from "../paypal";
@@ -19,7 +19,7 @@ export const createOrder = async (clientSideCart: Cart) => {
     // recalculate price and delivery date on the server
     const createdOrder = await createOrderFromCart(
       clientSideCart,
-      session.user.id!
+      session.user.id!,
     );
     return {
       success: true,
@@ -33,7 +33,7 @@ export const createOrder = async (clientSideCart: Cart) => {
 
 export const createOrderFromCart = async (
   clientSideCart: Cart,
-  userId: string
+  userId: string,
 ) => {
   const cart = {
     ...clientSideCart,
@@ -68,7 +68,7 @@ export const calcDeliveryDateAndPrice = async ({
   deliveryDateIndex?: number;
 }) => {
   const itemsPrice = round2(
-    items.reduce((acc, item) => acc + item.price * item.quantity, 0)
+    items.reduce((acc, item) => acc + item.price * item.quantity, 0),
   );
 
   const deliveryDate =
@@ -100,7 +100,7 @@ export const calcDeliveryDateAndPrice = async ({
   const totalPrice = round2(
     itemsPrice +
       (shippingPrice ? round2(shippingPrice) : 0) +
-      (taxPrice ? round2(taxPrice) : 0)
+      (taxPrice ? round2(taxPrice) : 0),
   );
 
   return {
@@ -116,13 +116,13 @@ export const calcDeliveryDateAndPrice = async ({
   };
 };
 
-export async function getOrderById(orderId: string):Promise<IOrder>{
-  await connectToDatabase()
-  const order = await Order.findById(orderId)
-  return JSON.parse(JSON.stringify(order))
+export async function getOrderById(orderId: string): Promise<IOrder> {
+  await connectToDatabase();
+  const order = await Order.findById(orderId);
+  return JSON.parse(JSON.stringify(order));
 }
 
-export async function createPayPalOrder(orderId: string  ) {
+export async function createPayPalOrder(orderId: string) {
   await connectToDatabase();
   try {
     const order = await Order.findById(orderId);

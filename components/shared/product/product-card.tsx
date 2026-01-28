@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import Link from 'next/link'
-import { IProduct } from '@/db/models/product.model'
+import { IProduct } from '@/lib/db/models/product.model'
 import ImageHover from './image-hover'
 import Image from 'next/image'
 import Rating from './rating'

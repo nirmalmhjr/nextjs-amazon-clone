@@ -1,6 +1,6 @@
 "use client"
 
-import { IOrder } from "@/db/models/order.model";
+import { IOrder } from "@/lib/db/models/order.model";
 import Link from "next/link";
 import ProductPrice from "../product/product-price";
 import { cn, formatDateTime } from "@/lib/utils";

@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { formatNumberWithDecimal } from "./utils";
+import { is } from "zod/v4/locales";
 
 // Common
 const Price = (field: string) =>
@@ -7,12 +8,25 @@ const Price = (field: string) =>
     .number()
     .refine(
       (value) => /^\d+(\.\d{2})?$/.test(formatNumberWithDecimal(value)),
-      `${field} must have exactly two decimal places (e.g., 49.99)`
+      `${field} must have exactly two decimal places (e.g., 49.99)`,
     );
 
 const MongoId = z
   .string()
   .regex(/^[0-9a-fA-F]{24}$/, { message: "Invalid MongoDB ID" });
+
+export const ReviewInputSchema = z.object({
+  product: MongoId,
+  user: MongoId,
+  isVerifiedPurchase: z.boolean(),
+  title: z.string().min(1, "Title is required"),
+  comment: z.string().min(1, "Comment is required"),
+  rating: z.coerce
+    .number()
+    .int()
+    .min(1, "Rating must be atleast 1")
+    .max(5, "Rating must be atmost 5"),
+});
 
 export const ProductInputSchema = z.object({
   name: z.string().min(3, "Name must be at least 3 characters"),
@@ -42,7 +56,8 @@ export const ProductInputSchema = z.object({
   ratingDistribution: z
     .array(z.object({ rating: z.number(), count: z.number() }))
     .max(5),
-  reviews: z.array(z.string()).default([]),
+  // reviews: z.array(z.string()).default([]),
+  reviews: z.array(ReviewInputSchema).default([]),
   numSales: z.coerce
     .number()
     .int()
@@ -69,8 +84,6 @@ export const OrderItemSchema = z.object({
   size: z.string().optional(),
   color: z.string().optional(),
 });
-
-
 
 export const ShippingAddressSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
@@ -112,7 +125,7 @@ export const OrderInputSchema = z.object({
     .date()
     .refine(
       (value) => value > new Date(),
-      "Expected delivery date must be in the future"
+      "Expected delivery date must be in the future",
     ),
   isDelivered: z.boolean().default(false),
   deliveredAt: z.date().optional(),

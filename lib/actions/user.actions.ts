@@ -4,7 +4,7 @@ import { IUserSignIn, IUserSignUp } from "@/types";
 import { redirect } from "next/navigation";
 import { UserSignUpSchema } from "../validator";
 import { connectToDatabase } from "..";
-import User from "@/db/models/user.model";
+import User from "@/lib/db/models/user.model";
 import bcrypt from "bcryptjs";
 import { formatError } from "../utils";
 
@@ -12,8 +12,8 @@ export async function signInWithCredentials(user: IUserSignIn) {
   return await signIn("credentials", { ...user, redirect: false });
 }
 
-export async function SignInWithGoogle(){
-  return await signIn('google')
+export async function SignInWithGoogle() {
+  return await signIn("google");
 }
 
 export const SignOut = async () => {

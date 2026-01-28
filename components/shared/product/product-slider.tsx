@@ -1,5 +1,5 @@
 "use client"
-import { IProduct } from '@/db/models/product.model'
+import { IProduct } from '@/lib/db/models/product.model'
 import React from 'react'
 import {
   Carousel,

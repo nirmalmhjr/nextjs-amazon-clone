@@ -97,7 +97,7 @@ const products: IProductInput[] = [
   {
     name: "Decrum Mens Plain Long Sleeve T-Shirt - Comfortable Soft Fashion V Neck Full Sleeves Jersey Shirts",
     slug: toSlug(
-      "Decrum Mens Plain Long Sleeve T-Shirt - Comfortable Soft Fashion V Neck Full Sleeves Jersey Shirts"
+      "Decrum Mens Plain Long Sleeve T-Shirt - Comfortable Soft Fashion V Neck Full Sleeves Jersey Shirts",
     ),
     category: "T-Shirts",
     brand: "Jerzees",
@@ -127,7 +127,7 @@ const products: IProductInput[] = [
   {
     name: "Muscle Cmdr Men's Slim Fit Henley Shirt Long&Short Business Sleeve Casual 3 Metal Buton Placket Casual Stylish T-Shirt",
     slug: toSlug(
-      "Muscle Cmdr Men's Slim Fit Henley Shirt Long&Short Business Sleeve Casual 3 Metal Buton Placket Casual Stylish T-Shirt"
+      "Muscle Cmdr Men's Slim Fit Henley Shirt Long&Short Business Sleeve Casual 3 Metal Buton Placket Casual Stylish T-Shirt",
     ),
     category: "T-Shirts",
     brand: " Muscle Cmdr",
@@ -214,7 +214,7 @@ const products: IProductInput[] = [
   {
     name: "Levi's mens 505 Regular Fit Jeans (Also Available in Big & Tall)",
     slug: toSlug(
-      "Levi's mens 505 Regular Fit Jeans (Also Available in Big & Tall)"
+      "Levi's mens 505 Regular Fit Jeans (Also Available in Big & Tall)",
     ),
     category: "Jeans",
     brand: "Levi's",
@@ -272,7 +272,7 @@ const products: IProductInput[] = [
   {
     name: "Buffalo David Bitton Mens Men's Driven Relaxed Denim JeansJeans",
     slug: toSlug(
-      "Buffalo David Bitton Mens Men's Driven Relaxed Denim JeansJeans"
+      "Buffalo David Bitton Mens Men's Driven Relaxed Denim JeansJeans",
     ),
     category: "Jeans",
     brand: "Buffalo David Bitton",
@@ -387,7 +387,7 @@ const products: IProductInput[] = [
   {
     name: "SEIKO 5 Sport SRPJ83 Beige Dial Nylon Automatic Watch, Beige, Automatic Watch",
     slug: toSlug(
-      "SEIKO 5 Sport SRPJ83 Beige Dial Nylon Automatic Watch, Beige, Automatic Watch"
+      "SEIKO 5 Sport SRPJ83 Beige Dial Nylon Automatic Watch, Beige, Automatic Watch",
     ),
     category: "Wrist Watches",
     brand: "Seiko",
@@ -417,7 +417,7 @@ const products: IProductInput[] = [
   {
     name: "Casio Men's Heavy Duty Analog Quartz Stainless Steel Strap, Silver, 42 Casual Watch ",
     slug: toSlug(
-      "Casio Men's Heavy Duty Analog Quartz Stainless Steel Strap, Silver, 42 Casual Watch"
+      "Casio Men's Heavy Duty Analog Quartz Stainless Steel Strap, Silver, 42 Casual Watch",
     ),
     category: "Wrist Watches",
     brand: "Casio",
@@ -447,7 +447,7 @@ const products: IProductInput[] = [
   {
     name: "Casio Classic Silver-Tone Stainless Steel Band Date Indicator Watch",
     slug: toSlug(
-      "Casio Classic Silver-Tone Stainless Steel Band Date Indicator Watch"
+      "Casio Classic Silver-Tone Stainless Steel Band Date Indicator Watch",
     ),
     category: "Wrist Watches",
     brand: "Casio",
@@ -562,7 +562,7 @@ const products: IProductInput[] = [
   {
     name: "ziitop Men's Running Walking Shoes Fashion Sneakers Mesh Dress Shoes Business Oxfords Shoes Lightweight Casual Breathable Work Formal Shoes",
     slug: toSlug(
-      "ziitop Men's Running Walking Shoes Fashion Sneakers Mesh Dress Shoes Business Oxfords Shoes Lightweight Casual Breathable Work Formal Shoes"
+      "ziitop Men's Running Walking Shoes Fashion Sneakers Mesh Dress Shoes Business Oxfords Shoes Lightweight Casual Breathable Work Formal Shoes",
     ),
     category: "Shoes",
     brand: "ziitop",
@@ -592,7 +592,7 @@ const products: IProductInput[] = [
   {
     name: "Skechers mens Summits High Range Hands Free Slip-in Shoes Work shoe",
     slug: toSlug(
-      "Skechers mens Summits High Range Hands Free Slip-in Shoes Work shoe"
+      "Skechers mens Summits High Range Hands Free Slip-in Shoes Work shoe",
     ),
     category: "Shoes",
     brand: "Skechers",
@@ -622,7 +622,7 @@ const products: IProductInput[] = [
   {
     name: "DLWKIPV Mens Running Shoes Tennis Cross Training Sneakers Fashion Non Slip Outdoor Walking Jogging Shoes Mesh Light Flexible Comfortable Breathable Shoes",
     slug: toSlug(
-      "DLWKIPV Mens Running Shoes Tennis Cross Training Sneakers Fashion Non Slip Outdoor Walking Jogging Shoes Mesh Light Flexible Comfortable Breathable Shoes"
+      "DLWKIPV Mens Running Shoes Tennis Cross Training Sneakers Fashion Non Slip Outdoor Walking Jogging Shoes Mesh Light Flexible Comfortable Breathable Shoes",
     ),
     category: "Shoes",
     brand: "DLWKIPV",
@@ -680,7 +680,7 @@ const products: IProductInput[] = [
   {
     name: "Mens Wearbreeze Shoes, Urban - Ultra Comfortable Shoes, Breeze Shoes for Men, Men's Mesh Dress Sneakers Business Shoes",
     slug: toSlug(
-      "Mens Wearbreeze Shoes, Urban - Ultra Comfortable Shoes, Breeze Shoes for Men, Men's Mesh Dress Sneakers Business Shoes"
+      "Mens Wearbreeze Shoes, Urban - Ultra Comfortable Shoes, Breeze Shoes for Men, Men's Mesh Dress Sneakers Business Shoes",
     ),
     category: "Shoes",
     brand: "Generic",
@@ -967,7 +967,101 @@ const users: IUserInput[] = [
   },
 ];
 
+const reviews = [
+  {
+    rating: 1,
+    title: "Poor quality",
+    comment:
+      "Very disappointed. The item broke after just a few uses. Not worth the money.",
+  },
+  {
+    rating: 2,
+    title: "Disappointed",
+    comment:
+      "Not as expected. The material feels cheap, and it didn't fit well. Wouldn't buy again.",
+  },
+  {
+    rating: 2,
+    title: "Needs improvement",
+    comment:
+      "It looks nice but doesn't perform as expected. Wouldn't recommend without upgrades.",
+  },
+  {
+    rating: 3,
+    title: "not bad",
+    comment:
+      "This product is decent, the quality is good but it could use some improvements in the details.",
+  },
+  {
+    rating: 3,
+    title: "Okay, not great",
+    comment:
+      "It works, but not as well as I hoped. Quality is average and lacks some finishing.",
+  },
+  {
+    rating: 3,
+    title: "Good product",
+    comment:
+      "This product is amazing, I love it! The quality is top notch, the material is comfortable and breathable.",
+  },
+  {
+    rating: 4,
+    title: "Pretty good",
+    comment:
+      "Solid product! Great value for the price, but there's room for minor improvements.",
+  },
+  {
+    rating: 4,
+    title: "Very satisfied",
+    comment:
+      "Good product! High quality and worth the price. Would consider buying again.",
+  },
+  {
+    rating: 4,
+    title: "Absolutely love it!",
+    comment:
+      "Perfect in every way! The quality, design, and comfort exceeded all my expectations.",
+  },
+  {
+    rating: 4,
+    title: "Exceeded expectations!",
+    comment:
+      "Fantastic product! High quality, feels durable, and performs well. Highly recommend!",
+  },
+  {
+    rating: 5,
+    title: "Perfect purchase!",
+    comment:
+      "Couldn't be happier with this product. The quality is excellent, and it works flawlessly!",
+  },
+  {
+    rating: 5,
+    title: "Highly recommend",
+    comment:
+      "Amazing product! Worth every penny, great design, and feels premium. I'm very satisfied.",
+  },
+  {
+    rating: 5,
+    title: "Just what I needed",
+    comment:
+      "Exactly as described! Quality exceeded my expectations, and it arrived quickly.",
+  },
+  {
+    rating: 5,
+    title: "Excellent choice!",
+    comment:
+      "This product is outstanding! Everything about it feels top-notch, from material to functionality.",
+  },
+  {
+    rating: 5,
+    title: "Couldn't ask for more!",
+    comment:
+      "Love this product! It's durable, stylish, and works great. Would buy again without hesitation.",
+  },
+];
+
 const data: Data = {
+  reviews,
   users,
   products,
   headerMenus: [
@@ -1028,7 +1122,5 @@ const data: Data = {
     },
   ],
 };
-
-
 
 export default data;
