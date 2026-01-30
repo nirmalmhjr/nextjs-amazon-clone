@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { formatNumberWithDecimal } from "./utils";
-import { is } from "zod/v4/locales";
+
 
 // Common
 const Price = (field: string) =>
@@ -186,3 +186,7 @@ export const UserSignUpSchema = UserSignInSchema.extend({
   message: "Password don't match",
   path: ["confirmPassword"],
 });
+
+export const UserNameSchema = z.object({
+  name: UserName
+})
