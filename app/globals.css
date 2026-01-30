@@ -140,9 +140,12 @@
   .h2-bold {
     @apply font-bold text-lg lg:text-xl;
   }
-  
-    .flex-between {
+
+  .flex-between {
     @apply flex justify-between items-center;
   }
 
+  .item-button {
+    @apply p-3 hover:bg-muted hover:no-underline;
+  }
 }
