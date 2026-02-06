@@ -25,7 +25,7 @@ export default function Footer() {
           <Link href='/page/help'>Help</Link>
         </div>
         <div className='flex justify-center text-sm'>
-          <p> © 2000-2024, {APP_NAME}, Inc. or its affiliates</p>
+          <p> © 2000-{new Date().getFullYear()}, {APP_NAME}, Inc. or its affiliates</p>
         </div>
         <div className='mt-8 flex justify-center text-sm text-gray-400'>
           123, Main Street, Anytown, CA, Zip 12345 | +1 (123) 456-7890

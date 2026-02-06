@@ -35,11 +35,11 @@ export default async function Header() {
                     <Search />
                 </div>
                 <Menu />
+            </div>
                 <div className="md:hidden block py-2">
                     <Search/>
                 </div>
-            </div>
-            <div className="flex items-center px-3 mb-[1px] bg-gray-800">
+            <div className="flex items-center px-3 mb-[1px] bg-gray-800 -mx-2">
                 <Sidebar categories={categories}/>
                 <div className="flex items-center flex-wrap gap-3 overflow-hidden max-h-[42px]">
                     {data.headerMenus.map((menu)=>(

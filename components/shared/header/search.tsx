@@ -11,8 +11,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { getAllCategories } from "@/lib/actions/product.actions"
 
-const categories = ['men','women','kids','accessories']
+// const categories = ['men','women','kids','accessories']
+const categories = await getAllCategories()
 
 async function search() {
   return (
@@ -40,7 +42,7 @@ async function search() {
       />
       <button
         type='submit'
-        className='bg-primary text-primary-foreground text-black rounded-s-none rounded-e-md h-full px-3 py-2 '
+        className='bg-primary text-primary-foreground  rounded-s-none rounded-e-md h-full px-3 py-2 '
       >
         <SearchIcon className='w-6 h-6' />
       </button>

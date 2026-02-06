@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { formatNumberWithDecimal } from "./utils";
 
-
 // Common
 const Price = (field: string) =>
   z.coerce
@@ -188,5 +187,41 @@ export const UserSignUpSchema = UserSignInSchema.extend({
 });
 
 export const UserNameSchema = z.object({
-  name: UserName
-})
+  name: UserName,
+});
+
+export const getFilterUrl = ({
+  params,
+  category,
+  tag,
+  sort,
+  price,
+  rating,
+  page,
+}: {
+  params: {
+    q?: string;
+    category?: string;
+    tag?: string;
+    price?: string;
+    rating?: string;
+    sort?: string;
+    page?: string;
+  };
+  category?: string;
+  tag?: string;
+  sort?: string;
+  price?: string;
+  rating?: string;
+  page?: string;
+}) => {
+  const newParams = { ...params };
+  if (category) newParams.category = category;
+  if (tag) newParams.tag = tag;
+  if (price) newParams.price = price;
+  if (rating) newParams.rating = rating;
+  if (page) newParams.page = page;
+  if (sort) newParams.sort = sort;
+
+  return `/search?${new URLSearchParams(newParams).toString()}`;
+};

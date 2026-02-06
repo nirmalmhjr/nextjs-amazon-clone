@@ -10,7 +10,7 @@ type PaginationProps = {
     urlParamName?: string
 }
 
-export default function pagination ({page, totalPages, urlParamName}: PaginationProps){
+export default function Pagination ({page, totalPages, urlParamName}: PaginationProps){
     const router = useRouter()
     const searchParams = useSearchParams()
 
