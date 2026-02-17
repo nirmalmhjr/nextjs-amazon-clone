@@ -1,4 +1,3 @@
-import Menu from "./menu"
 import Search from "./search"
 
 import { Button } from "@/components/ui/button"
@@ -9,6 +8,7 @@ import Image from "next/image"
 import { APP_NAME } from "@/lib/constants"
 import Sidebar from "./sidebar"
 import { getAllCategories } from "@/lib/actions/product.actions"
+import Menu from "./menu"
 
 
 export default async function Header() {

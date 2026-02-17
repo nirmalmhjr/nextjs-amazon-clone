@@ -3,12 +3,14 @@
 import useCartSidebar from "@/hooks/use-cart-sidebar"
 import CartSidebar from "./cart-sidebar"
 import { Toaster } from "../ui/sonner"
+import ThemeProvider from "./theme-provider"
+import React from "react"
 
 export default function ClientProviders({children}:{children: React.ReactNode}){
     const isCartSidebarOpen = useCartSidebar()
 
     return (
-       <>
+       <ThemeProvider attribute={'class'}  defaultTheme="system">
         {
             isCartSidebarOpen ? (
                 <div className="flex min-h-screen">
@@ -20,6 +22,6 @@ export default function ClientProviders({children}:{children: React.ReactNode}){
             )
         }
         <Toaster />
-       </>
+       </ThemeProvider>
     )
 }
