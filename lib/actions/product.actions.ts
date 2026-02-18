@@ -25,7 +25,7 @@ export async function getProductForCard({
     { tags: { $in: [tag] }, isPublished: true },
     {
       name: 1,
-      href: { $concat: ["/product", "$slug"] },
+      href: { $concat: ["/product/", "$slug"] },
       image: { $arrayElemAt: ["$images", 0] },
     },
   )
