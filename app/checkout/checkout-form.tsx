@@ -75,7 +75,7 @@ export default function CheckoutForm(){
     })
 
     const onSubmitShippingAddress : SubmitHandler<ShippingAddress> = (values) =>{
-      console.log('this is ',values)
+
         setShippingAddress(values)
         setIsAddressSelected(true)
     } 

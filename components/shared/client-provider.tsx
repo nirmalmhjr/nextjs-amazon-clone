@@ -10,7 +10,7 @@ export default function ClientProviders({children}:{children: React.ReactNode}){
     const isCartSidebarOpen = useCartSidebar()
 
     return (
-       <ThemeProvider attribute={'class'}  defaultTheme="system">
+       <ThemeProvider attribute={'class'}  defaultTheme="light" enableSystem={false}>
         {
             isCartSidebarOpen ? (
                 <div className="flex min-h-screen">

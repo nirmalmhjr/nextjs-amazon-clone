@@ -181,7 +181,6 @@ export async function getAllProducts({
      .limit(limit)
      .lean();
 
-  console.log("products are ", products);
 
   const countProducts = await Product.countDocuments({
     ...queryFilter,

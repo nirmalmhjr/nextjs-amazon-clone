@@ -133,7 +133,6 @@ export default function ReviewList({
   const [open, setOpen] = useState(false)
 //   const { toast } = useToast()
   const onSubmit: SubmitHandler<CustomerReview> = async (values) => {
-    console.log('button clicked')
     const res = await createUpdateReview({
       data: { ...values,
          product: product._id.toString(),
@@ -141,7 +140,7 @@ export default function ReviewList({
          },
       path: `/product/${product.slug}`,
     })
-    console.log('erere',res)
+    
     if (!res.success)
       return toast.error(res.message)
     setOpen(false)

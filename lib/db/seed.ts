@@ -44,12 +44,6 @@ const main = async () => {
 
     const createdReviews = await Review.insertMany(rws)
 
-    console.log({
-      createdUser,
-      createdProducts,
-      createdReviews,
-      message: "Seeded database successfully",
-    });
 
     process.exit(0);
   } catch (error) {
